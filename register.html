@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fluency</title>
+    <link rel="icon" type="image/png" href="graph/favicon.png" sizes="16x16">
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito" rel="stylesheet"></head>
+<body>
+<div id="wrap">
+    <header class="pointer">
+        <div>
+            <h1 id="fluency">Fluency</h1>
+            <p id="slogan">is a bridge for a foreign culture</p>
+        </div>
+    </header>
+    <div id="content">
+        <div id="formDiv">
+            <img src="graph/logo.png" alt="logo" id="logo">
+            <form action="?" method="post" id="registerForm">
+                <input type="email" name="email" placeholder="email" class="input" id="email">
+                <br>
+                <input type="text" name="username" placeholder="username" class="input" id="username">
+                <br>
+                <input type="password" name="password" placeholder="********" class="input" id="password">
+                <br>
+                <input type="submit" value="Create account" class="submitBtn">
+            </form>
+        </div>
+        <p id="haveAcc">Already have an account? Sign in <a href="login.html">Here</a>.</p>
+    </div>
+</div>
+<div id="noticeBackground">
+    <div id="notice" class="shadow"></div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
+<script src="script/main.js"></script>
+<script>
+    let allUsernames = getAllUsernames();
+
+    registerForm.addEventListener("submit", userRegistration);
+
+    function getAllUsernames() {
+        let tempArr = [];
+        firebase.database().ref('users/').on('child_added', function (data) {
+            tempArr.push(data.val().username);
+        });
+        return tempArr;
+    }
+
+    function userRegistration(event) {
+        event.preventDefault();
+        let email = document.getElementById("email").value,
+            password = document.getElementById("password").value,
+            username = document.getElementById("username").value;
+        if (allUsernames.indexOf(username) !== -1) {
+            alert("username alredy exist");
+        } else {
+            firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+                let user = firebase.auth().currentUser;
+                user.sendEmailVerification().then(() => {
+                    alert("Verification Email Sent");
+                })
+            }).then(() => {
+                writeUserDataOnRegistration(username, email);
+                setStatus("online", userId);
+                alert("Registration Successful");
+                setTimeout(() => {
+                    location.assign('./dashboard.html');
+                }, 3e3);
+                registerForm.reset();
+            }).catch(error => {
+                alert(error.code);
+            });
+        }
+    }
+</script>
+</body>
+</html>

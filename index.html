@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fluency</title>
+    <link rel="icon" type="image/png" href="graph/favicon.png" sizes="16x16">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/indexStyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito" rel="stylesheet">
+</head>
+<body>
+<div id="wrap">
+    <header class="pointer">
+        <div>
+            <h1 id="fluency">Fluency</h1>
+            <p id="slogan">is a bridge for a foreign culture</p>
+        </div>
+    </header>
+    <div id="logo">
+        <img src="graph/logo.png" alt="logo">
+    </div>
+    <h3>loading...</h3>
+</div>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+<script>
+    let config = {
+        apiKey: "AIzaSyCh43EY9Ehxt8tdtb9XNkqYgdDatmy6DnA",
+        authDomain: "fluency-lang.firebaseapp.com",
+        databaseURL: "https://fluency-lang.firebaseio.com",
+        projectId: "fluency-lang",
+        storageBucket: "fluency-lang.appspot.com",
+        messagingSenderId: "365373726518"
+    };
+    firebase.initializeApp(config);
+
+    setTimeout(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                location.assign("./dashboard.html");
+            } else {
+                location.assign("./login.html");
+            }
+        });
+    }, 2e3);
+</script>
+</body>
+</html>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fluency</title>
+    <link rel="icon" type="image/png" href="graph/favicon.png" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/dashStyle.css">
+    <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+<body>
+<div id="wrap">
+    <header class="pointer">
+        <img src="graph/logoForBoard.png" alt="logo" id="logo" class="pointer">
+        <div>
+            <h1 id="fluency">Fluency</h1>
+            <p id="slogan">is a bridge for a foreign culture</p>
+        </div>
+    </header>
+    <div id="contentsDiv">
+        <div id="myMessagesDiv" class="hide fullWidth">
+            <div id="msgBoard" class="flexRow contentDiv shadow border noOverflow">
+                <div id="conversationList" class="noOverflow leftSide hideLeftSide">
+                    <div id="showConversationsBtn" class="showHideLeftSideBtn pointer">Conversations</div>
+                    <div id="conversations" class="flexColumn"></div>
+                    <div id="trash" class="pointer"><i class="fas fa-trash-alt"></i></div>
+                </div>
+                <div id="chatContent" class="noVisibility flexColumn rightSide smFullWidth">
+                    <div id="divZaZvezdice">
+                        <span id="zvezdicePoruka">Rate this user:</span>
+                        <div id="zvezdice" class="zvezdice pointer">
+                            <a id="zvezdica_5" class="icon ion-md-star b1"></a>
+                            <a id="zvezdica_4" class="icon ion-md-star b2"></a>
+                            <a id="zvezdica_3" class="icon ion-md-star b3"></a>
+                            <a id="zvezdica_2" class="icon ion-md-star b4"></a>
+                            <a id="zvezdica_1" class="icon ion-md-star b5"></a>
+                        </div>
+                    </div>
+                    <div id="videoStreamDiv" class="hide">
+                        <video id="friendsVideo" width="320" height="240" autoplay></video>
+                        <video id="yourVideo" width="240" height="160" autoplay muted></video>
+                        <button id="endCall">End Call</button>
+                    </div>
+                    <div id="messages" class="scrollbar-external"></div>
+                    <div class="relative fullWidth">
+                        <div id="callAndVisitProfile" class="flexRow">
+                            <button id="videoCallBtn" class="callAndProfileBtns pointer">Video Call</button>
+                            <button id="visitProfileBtn" class="callAndProfileBtns pointer">Visit Profile</button>
+                        </div>
+                    </div>
+                    <form action="?" method="post" id="sendMsgForm" class="fullWidth flexRow">
+                        <label for="typeMsg"></label><input type="text" name="typeMsg" id="typeMsg"
+                                                            class="fullWidth msgInput" autocomplete="off">
+                        <input type="submit" value="➤">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="myProfileDiv" class="hide">
+            <div id="profileForms">
+                <div id="personalInfoFormDiv" class="form infoFormDiv noOverflow">
+                    <h2 class="formName fullWidth pointer">Personal Info</h2>
+                    <hr>
+                    <form action="?" method="post" id="personalInfoForm" class="infoForm hide noOverflow">
+                        <p>
+                            <label for="name">Name:</label><br>
+                            <input type="text" name="name" id="name">
+                        </p>
+                        <p>
+                            <label for="country">Country:</label><br>
+                            <input type="text" name="country" id="country">
+                        </p>
+                        <p>
+                            <label for="city">City:</label><br>
+                            <input type="text" name="city" id="city">
+                        </p>
+                        <p>
+                            <label for="birthDate">Birth Date:</label><br>
+                            <input type="date" name="birthDate" id="birthDate">
+                        </p>
+                        <p>Gender:</p>
+                        <div id="genderDiv">
+                            <input type="radio" name="gender" id="male"><label for="male">Male</label>
+                            <input type="radio" name="gender" id="female"><label for="female">Female</label>
+                            <input type="radio" name="gender" id="other"><label for="other">Other</label>
+                        </div>
+
+                        <input type="submit" value="Save" class="submitBtn">
+                    </form>
+                    
+                </div>
+                <div id="aboutMeFormDiv" class="form infoFormDiv noOverflow">
+                    <h2 class="formName fullWidth pointer">About Me</h2>
+                    <hr>
+                    <form action="?" method="post" id="aboutMeForm" class="infoForm hide noOverflow">
+                        <p>
+                            <label for="aboutMe">About Me:</label><br>
+                            <textarea name="aboutMe" id="aboutMe" cols="30" rows="7" maxlength="150"></textarea>
+                        </p>
+                        <p>Interests:</p>
+                        <div id="interests" class="border fullWidth">
+                            <input type="checkbox" name="interests" value="traveling" id="traveling"><label
+                                for="traveling">traveling</label><br>
+                            <input type="checkbox" name="interests" value="sports" id="sports"><label for="sports">sports</label><br>
+                            <input type="checkbox" name="interests" value="music" id="music"><label
+                                for="music">music</label><br>
+                            <input type="checkbox" name="interests" value="gaming" id="gaming"><label for="gaming">gaming</label><br>
+                            <input type="checkbox" name="interests" value="art" id="art"><label
+                                for="art">art</label><br>
+                            <input type="checkbox" name="interests" value="cars" id="cars"><label
+                                for="cars">cars</label><br>
+                            <input type="checkbox" name="interests" value="animals" id="animals"><label for="animals">animals</label><br>
+                            <input type="checkbox" name="interests" value="reading" id="reading"><label for="reading">reading</label><br>
+                            <input type="checkbox" name="interests" value="food" id="food"><label
+                                for="food">food</label><br>
+                            <input type="checkbox" name="interests" value="technology" id="technology"><label
+                                for="technology">technology</label><br>
+                            <input type="checkbox" name="interests" value="movies" id="movies"><label for="movies">movies</label><br>
+                            <input type="checkbox" name="interests" value="comics" id="comics"><label for="comics">comics</label><br>
+                            <input type="checkbox" name="interests" value="photography" id="photography"><label
+                                for="photography">photography</label><br>
+                        </div>
+                        <span id="maxFive">max five</span>
+                        <input type="submit" value="Save" class="submitBtn">
+                    </form>
+                    
+                </div>
+                <div id="languageInfoFormDiv" class="form infoFormDiv noOverflow">
+                    <h2 class="formName fullWidth pointer">Language Info</h2>
+                    <hr>
+                    <form action="?" method="post" id="languageInfoForm" class="infoForm hide noOverflow">
+                        <p>
+                            <label for="nativeLanguage">Native Language:</label><br>
+                            <select name="nativeLang" id="nativeLanguage">
+                                <option value="noLang" selected disabled>Choose a Language...</option>
+                                <option value="Afrikanns">Afrikanns</option>
+                                <option value="Albanian">Albanian</option>
+                                <option value="Arabic">Arabic</option>
+                                <option value="Armenian">Armenian</option>
+                                <option value="Basque">Basque</option>
+                                <option value="Bengali">Bengali</option>
+                                <option value="Bulgarian">Bulgarian</option>
+                                <option value="Catalan">Catalan</option>
+                                <option value="Cambodian">Cambodian</option>
+                                <option value="Chinese (Mandarin)">Chinese (Mandarin)</option>
+                                <option value="Croation">Croation</option>
+                                <option value="Czech">Czech</option>
+                                <option value="Danish">Danish</option>
+                                <option value="Dutch">Dutch</option>
+                                <option value="English">English</option>
+                                <option value="Estonian">Estonian</option>
+                                <option value="Fiji">Fiji</option>
+                                <option value="Finnish">Finnish</option>
+                                <option value="French">French</option>
+                                <option value="Georgian">Georgian</option>
+                                <option value="German">German</option>
+                                <option value="Greek">Greek</option>
+                                <option value="Gujarati">Gujarati</option>
+                                <option value="Hebrew">Hebrew</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="Hungarian">Hungarian</option>
+                                <option value="Icelandic">Icelandic</option>
+                                <option value="Indonesian">Indonesian</option>
+                                <option value="Irish">Irish</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Javanese">Javanese</option>
+                                <option value="Korean">Korean</option>
+                                <option value="Latin">Latin</option>
+                                <option value="Latvian">Latvian</option>
+                                <option value="Lithuanian">Lithuanian</option>
+                                <option value="Macedonian">Macedonian</option>
+                                <option value="Malay">Malay</option>
+                                <option value="Malayalam">Malayalam</option>
+                                <option value="Maltese">Maltese</option>
+                                <option value="Maori">Maori</option>
+                                <option value="Marathi">Marathi</option>
+                                <option value="Mongolian">Mongolian</option>
+                                <option value="Nepali">Nepali</option>
+                                <option value="Norwegian">Norwegian</option>
+                                <option value="Persian">Persian</option>
+                                <option value="Polish">Polish</option>
+                                <option value="Portuguese">Portuguese</option>
+                                <option value="Punjabi">Punjabi</option>
+                                <option value="Quechua">Quechua</option>
+                                <option value="Romanian">Romanian</option>
+                                <option value="Russian">Russian</option>
+                                <option value="Samoan">Samoan</option>
+                                <option value="Serbian">Serbian</option>
+                                <option value="Slovak">Slovak</option>
+                                <option value="Slovenian">Slovenian</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="Swahili">Swahili</option>
+                                <option value="Swedish">Swedish</option>
+                                <option value="Tamil">Tamil</option>
+                                <option value="Tatar">Tatar</option>
+                                <option value="Telugu">Telugu</option>
+                                <option value="Thai">Thai</option>
+                                <option value="Tibetan">Tibetan</option>
+                                <option value="Tonga">Tonga</option>
+                                <option value="Turkish">Turkish</option>
+                                <option value="Ukranian">Ukranian</option>
+                                <option value="Urdu">Urdu</option>
+                                <option value="Uzbek">Uzbek</option>
+                                <option value="Vietnamese">Vietnamese</option>
+                                <option value="Welsh">Welsh</option>
+                                <option value="Xhosa">Xhosa</option>
+                            </select>
+                        </p>
+                        <br>
+                        <p>Other Languages:</p>
+                        <div id="lang" class="border fullWidth">
+                            <input type="checkbox" name="Afrikanns" id="Afrikanns"><label
+                                for="Afrikanns">Afrikanns</label><br>
+                            <input type="checkbox" name="Albanian" id="Albanian"><label
+                                for="Albanian">Albanian</label><br>
+                            <input type="checkbox" name="Arabic" id="Arabic"><label for="Arabic">Arabic</label><br>
+                            <input type="checkbox" name="Armenian" id="Armenian"><label
+                                for="Armenian">Armenian</label><br>
+                            <input type="checkbox" name="Basque" id="Basque"><label for="Basque">Basque</label><br>
+                            <input type="checkbox" name="Bengali" id="Bengali"><label for="Bengali">Bengali</label><br>
+                            <input type="checkbox" name="Bulgarian" id="Bulgarian"><label
+                                for="Bulgarian">Bulgarian</label><br>
+                            <input type="checkbox" name="Catalan" id="Catalan"><label for="Catalan">Catalan</label><br>
+                            <input type="checkbox" name="Cambodian" id="Cambodian"><label
+                                for="Cambodian">Cambodian</label><br>
+                            <input type="checkbox" name="Chinese" id="Chinese"><label for="Chinese">Chinese</label><br>
+                            <input type="checkbox" name="Croation" id="Croation"><label
+                                for="Croation">Croation</label><br>
+                            <input type="checkbox" name="Czech" id="Czech"><label for="Czech">Czech</label><br>
+                            <input type="checkbox" name="Danish" id="Danish"><label for="Danish">Danish</label><br>
+                            <input type="checkbox" name="Dutch" id="Dutch"><label for="Dutch">Dutch</label><br>
+                            <input type="checkbox" name="English" id="English"><label for="English">English</label><br>
+                            <input type="checkbox" name="Estonian" id="Estonian"><label
+                                for="Estonian">Estonian</label><br>
+                            <input type="checkbox" name="Fiji" id="Fiji"><label for="Fiji">Fiji</label><br>
+                            <input type="checkbox" name="Finnish" id="Finnish"><label for="Finnish">Finnish</label><br>
+                            <input type="checkbox" name="French" id="French"><label for="French">French</label><br>
+                            <input type="checkbox" name="Georgian" id="Georgian"><label
+                                for="Georgian">Georgian</label><br>
+                            <input type="checkbox" name="German" id="German"><label for="German">German</label><br>
+                            <input type="checkbox" name="Greek" id="Greek"><label for="Greek">Greek</label><br>
+                            <input type="checkbox" name="Gujarati" id="Gujarati"><label
+                                for="Gujarati">Gujarati</label><br>
+                            <input type="checkbox" name="Hebrew" id="Hebrew"><label for="Hebrew">Hebrew</label><br>
+                            <input type="checkbox" name="Hindi" id="Hindi"><label for="Hindi">Hindi</label><br>
+                            <input type="checkbox" name="Hungarian" id="Hungarian"><label
+                                for="Hungarian">Hungarian</label><br>
+                            <input type="checkbox" name="Icelandic" id="Icelandic"><label
+                                for="Icelandic">Icelandic</label><br>
+                            <input type="checkbox" name="Indonesian" id="Indonesian"><label
+                                for="Indonesian">Indonesian</label><br>
+                            <input type="checkbox" name="Irish" id="Irish"><label for="Irish">Irish</label><br>
+                            <input type="checkbox" name="Italian" id="Italian"><label for="Italian">Italian</label><br>
+                            <input type="checkbox" name="Japanese" id="Japanese"><label
+                                for="Japanese">Japanese</label><br>
+                            <input type="checkbox" name="Javanese" id="Javanese"><label
+                                for="Javanese">Javanese</label><br>
+                            <input type="checkbox" name="Korean" id="Korean"><label for="Korean">Korean</label><br>
+                            <input type="checkbox" name="Latin" id="Latin"><label for="Latin">Latin</label><br>
+                            <input type="checkbox" name="Latvian" id="Latvian"><label for="Latvian">Latvian</label><br>
+                            <input type="checkbox" name="Lithuanian" id="Lithuanian"><label
+                                for="Lithuanian">Lithuanian</label><br>
+                            <input type="checkbox" name="Macedonian" id="Macedonian"><label
+                                for="Macedonian">Macedonian</label><br>
+                            <input type="checkbox" name="Malay" id="Malay"><label for="Malay">Malay</label><br>
+                            <input type="checkbox" name="Malayalam" id="Malayalam"><label
+                                for="Malayalam">Malayalam</label><br>
+                            <input type="checkbox" name="Maltese" id="Maltese"><label for="Maltese">Maltese</label><br>
+                            <input type="checkbox" name="Maori" id="Maori"><label for="Maori">Maori</label><br>
+                            <input type="checkbox" name="Marathi" id="Marathi"><label for="Marathi">Marathi</label><br>
+                            <input type="checkbox" name="Mongolian" id="Mongolian"><label
+                                for="Mongolian">Mongolian</label><br>
+                            <input type="checkbox" name="Nepali" id="Nepali"><label for="Nepali">Nepali</label><br>
+                            <input type="checkbox" name="Norwegian" id="Norwegian"><label
+                                for="Norwegian">Norwegian</label><br>
+                            <input type="checkbox" name="Persian" id="Persian"><label for="Persian">Persian</label><br>
+                            <input type="checkbox" name="Polish" id="Polish"><label for="Polish">Polish</label><br>
+                            <input type="checkbox" name="Portuguese" id="Portuguese"><label
+                                for="Portuguese">Portuguese</label><br>
+                            <input type="checkbox" name="Punjabi" id="Punjabi"><label for="Punjabi">Punjabi</label><br>
+                            <input type="checkbox" name="Quechua" id="Quechua"><label for="Quechua">Quechua</label><br>
+                            <input type="checkbox" name="Romanian" id="Romanian"><label
+                                for="Romanian">Romanian</label><br>
+                            <input type="checkbox" name="Russian" id="Russian"><label for="Russian">Russian</label><br>
+                            <input type="checkbox" name="Samoan" id="Samoan"><label for="Samoan">Samoan</label><br>
+                            <input type="checkbox" name="Serbian" id="Serbian"><label for="Serbian">Serbian</label><br>
+                            <input type="checkbox" name="Slovak" id="Slovak"><label for="Slovak">Slovak</label><br>
+                            <input type="checkbox" name="Slovenian" id="Slovenian"><label
+                                for="Slovenian">Slovenian</label><br>
+                            <input type="checkbox" name="Spanish" id="Spanish"><label for="Spanish">Spanish</label><br>
+                            <input type="checkbox" name="Swahili" id="Swahili"><label for="Swahili">Swahili</label><br>
+                            <input type="checkbox" name="Swedish" id="Swedish"><label
+                                for="Swedish">Swedish </label><br>
+                            <input type="checkbox" name="Tamil" id="Tamil"><label for="Tamil">Tamil</label><br>
+                            <input type="checkbox" name="Tatar" id="Tatar"><label for="Tatar">Tatar</label><br>
+                            <input type="checkbox" name="Telugu" id="Telugu"><label for="Telugu">Telugu</label><br>
+                            <input type="checkbox" name="Thai" id="Thai"><label for="Thai">Thai</label><br>
+                            <input type="checkbox" name="Tibetan" id="Tibetan"><label for="Tibetan">Tibetan</label><br>
+                            <input type="checkbox" name="Tonga" id="Tonga"><label for="Tonga">Tonga</label><br>
+                            <input type="checkbox" name="Turkish" id="Turkish"><label for="Turkish">Turkish</label><br>
+                            <input type="checkbox" name="Ukranian" id="Ukranian"><label
+                                for="Ukranian">Ukranian</label><br>
+                            <input type="checkbox" name="Urdu" id="Urdu"><label for="Urdu">Urdu</label><br>
+                            <input type="checkbox" name="Uzbek" id="Uzbek"><label for="Uzbek">Uzbek</label><br>
+                            <input type="checkbox" name="Vietnamese" id="Vietnamese"><label
+                                for="Vietnamese">Vietnamese</label><br>
+                            <input type="checkbox" name="Welsh" id="Welsh"><label for="Welsh">Welsh</label><br>
+                            <input type="checkbox" name="Xhosa" id="Xhosa"><label for="Xhosa">Xhosa</label><br>
+                        </div>
+                        <input type="submit" value="Save" class="submitBtn">
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+        <div id="settingsDiv" class="form hide">
+            <button id="settingsEditBtn">Edit Profile</button>
+            <button id="settingsChangePass">Change Password</button>
+            <button id="settingsDeleteAcc">Delete Account</button>
+        </div>
+        <div id="deleteAccDiv" class="form hide">
+                <form action="?" method="post" id="deleteAccForm">
+            <input type="text" id="confirmPassForDelete" class="input" placeholder="Confirm your password">
+            <input type="submit" id="deleteAccDivDeleteAcc" class="submitBtn" value="Confirm delete">
+            <input type="button" id="backFromDeleteAcc" class="submitBtn" value="Back">
+        </form>
+        </div>
+        <div id="changePassDiv" class="form hide">
+            <form action="?" method="post" id="changePasswordForm">
+            	<p>CHANGE PASSWORD</p>
+            	<br>
+                <input type="password" name="oldPass" placeholder="Old Password" class="input" id="oldPass">
+                <br>
+                <input type="password" name="newPass" placeholder="New Password" class="input" id="newPass">
+                <br>
+                <input type="password" name="newPassRepeat" placeholder="Repeat New Password" class="input" id="newPassRepeat">
+                <br>
+                <input type="submit" value="Update Password" class="submitBtn" id="updatePassBtn">
+                <input type="button" value="Back" class="submitBtn" id="backFromPassChange">
+            </form>
+        </div>
+        <div id="myFavoritesDiv" class="hide fullWidth">
+            <div id="favorites" class="border shadow noOverflow">
+                <ul id="favNavigation" class="flexRow">
+                    <li id="aFavs"><a href="#" id="allFavs">All Favorites</a></li>
+                    <li id="oFavs"><a href="#" id="onlineFavs">Online Favorites</a></li>
+                </ul>
+                <div id="favoritesList" class="fullWidth"></div>
+            </div>
+        </div>
+        <div id="myBlockListDiv" class="hide fullWidth">
+            <div id="blockedUsers" class="contentDiv shadow border noOverflow flexColumn">
+                <div class="blockedListLabel">List of Blocked Users</div>
+                <div id="blockedList" class="fullWidth"></div>
+            </div>
+        </div>
+        <div id="channelsDiv" class="hide fullWidth">
+            <div id="search" class="border shadow">
+                <div id="showSearchBtn" class="searchBar pointer">search by username</div>
+                <form action="?" method="post" id="searchForm" class="searchBar">
+                    <input type="search" title="search" name="searchInput" id="searchBar" autocomplete="off"
+                           placeholder="search">
+                    <input type="submit" value="➤" class="sendArrow">
+                </form>
+            </div>
+            <div class="contentDiv shadow border flexRow noOverflow">
+                <div id="channelsList" class="noOverflow leftSide hideLeftSide">
+                    <div id="showChannelsBtn" class="showHideLeftSideBtn pointer">Channels</div>
+                    <form action="?" method="post" id="chooseChannel">
+                        <h3>Select language:</h3>
+                        <div id="langSelect">
+                            <p><input type="radio" name="langChannel" value="Afrikanns" id="channelAfrikanns"><label
+                                    for="channelAfrikanns">Afrikanns</label></p>
+                            <p><input type="radio" name="langChannel" value="Albanian" id="channelAlbanian"><label
+                                    for="channelAlbanian">Albanian</label></p>
+                            <p><input type="radio" name="langChannel" value="Arabic" id="channelArabic"><label
+                                    for="channelArabic">Arabic</label></p>
+                            <p><input type="radio" name="langChannel" value="Armenian" id="channelArmenian"><label
+                                    for="channelArmenian">Armenian</label></p>
+                            <p><input type="radio" name="langChannel" value="Basque" id="channelBasque"><label
+                                    for="channelBasque">Basque</label></p>
+                            <p><input type="radio" name="langChannel" value="Bengali" id="channelBengali"><label
+                                    for="channelBengali">Bengali</label></p>
+                            <p><input type="radio" name="langChannel" value="Bulgarian" id="channelBulgarian"><label
+                                    for="channelBulgarian">Bulgarian</label></p>
+                            <p><input type="radio" name="langChannel" value="Catalan" id="channelCatalan"><label
+                                    for="channelCatalan">Catalan</label></p>
+                            <p><input type="radio" name="langChannel" value="Cambodian" id="channelCambodian"><label
+                                    for="channelCambodian">Cambodian</label></p>
+                            <p><input type="radio" name="langChannel" value="Chinese" id="channelChinese"><label
+                                    for="channelChinese">Chinese</label></p>
+                            <p><input type="radio" name="langChannel" value="Croation" id="channelCroation"><label
+                                    for="channelCroation">Croation</label></p>
+                            <p><input type="radio" name="langChannel" value="Czech" id="channelCzech"><label
+                                    for="channelCzech">Czech</label></p>
+                            <p><input type="radio" name="langChannel" value="Danish" id="channelDanish"><label
+                                    for="channelDanish">Danish</label></p>
+                            <p><input type="radio" name="langChannel" value="Dutch" id="channelDutch"><label
+                                    for="channelDutch">Dutch</label></p>
+                            <p><input type="radio" name="langChannel" value="English" id="channelEnglish"><label
+                                    for="channelEnglish">English</label></p>
+                            <p><input type="radio" name="langChannel" value="Estonian" id="channelEstonian"><label
+                                    for="channelEstonian">Estonian</label></p>
+                            <p><input type="radio" name="langChannel" value="Fiji" id="channelFiji"><label
+                                    for="channelFiji">Fiji</label></p>
+                            <p><input type="radio" name="langChannel" value="Finnish" id="channelFinnish"><label
+                                    for="channelFinnish">Finnish</label></p>
+                            <p><input type="radio" name="langChannel" value="French" id="channelFrench"><label
+                                    for="channelFrench">French</label></p>
+                            <p><input type="radio" name="langChannel" value="Georgian" id="channelGeorgian"><label
+                                    for="channelGeorgian">Georgian</label></p>
+                            <p><input type="radio" name="langChannel" value="German" id="channelGerman"><label
+                                    for="channelGerman">German</label></p>
+                            <p><input type="radio" name="langChannel" value="Greek" id="channelGreek"><label
+                                    for="channelGreek">Greek</label></p>
+                            <p><input type="radio" name="langChannel" value="Gujarati" id="channelGujarati"><label
+                                    for="channelGujarati">Gujarati</label></p>
+                            <p><input type="radio" name="langChannel" value="Hebrew" id="channelHebrew"><label
+                                    for="channelHebrew">Hebrew</label></p>
+                            <p><input type="radio" name="langChannel" value="Hindi" id="channelHindi"><label
+                                    for="channelHindi">Hindi</label></p>
+                            <p><input type="radio" name="langChannel" value="Hungarian" id="channelHungarian"><label
+                                    for="channelHungarian">Hungarian</label></p>
+                            <p><input type="radio" name="langChannel" value="Icelandic" id="channelIcelandic"><label
+                                    for="channelIcelandic">Icelandic</label></p>
+                            <p><input type="radio" name="langChannel" value="Indonesian" id="channelIndonesian"><label
+                                    for="channelIndonesian">Indonesian</label></p>
+                            <p><input type="radio" name="langChannel" value="Irish" id="channelIrish"><label
+                                    for="channelIrish">Irish</label></p>
+                            <p><input type="radio" name="langChannel" value="Italian" id="channelItalian"><label
+                                    for="channelItalian">Italian</label></p>
+                            <p><input type="radio" name="langChannel" value="Japanese" id="channelJapanese"><label
+                                    for="channelJapanese">Japanese</label></p>
+                            <p><input type="radio" name="langChannel" value="Javanese" id="channelJavanese"><label
+                                    for="channelJavanese">Javanese</label></p>
+                            <p><input type="radio" name="langChannel" value="Korean" id="channelKorean"><label
+                                    for="channelKorean">Korean</label></p>
+                            <p><input type="radio" name="langChannel" value="Latin" id="channelLatin"><label
+                                    for="channelLatin">Latin</label></p>
+                            <p><input type="radio" name="langChannel" value="Latvian" id="channelLatvian"><label
+                                    for="channelLatvian">Latvian</label></p>
+                            <p><input type="radio" name="langChannel" value="Lithuanian" id="channelLithuanian"><label
+                                    for="channelLithuanian">Lithuanian</label></p>
+                            <p><input type="radio" name="langChannel" value="Macedonian" id="channelMacedonian"><label
+                                    for="channelMacedonian">Macedonian</label></p>
+                            <p><input type="radio" name="langChannel" value="Malay" id="channelMalay"><label
+                                    for="channelMalay">Malay</label></p>
+                            <p><input type="radio" name="langChannel" value="Malayalam" id="channelMalayalam"><label
+                                    for="channelMalayalam">Malayalam</label></p>
+                            <p><input type="radio" name="langChannel" value="Maltese" id="channelMaltese"><label
+                                    for="channelMaltese">Maltese</label></p>
+                            <p><input type="radio" name="langChannel" value="Maori" id="channelMaori"><label
+                                    for="channelMaori">Maori</label></p>
+                            <p><input type="radio" name="langChannel" value="Marathi" id="channelMarathi"><label
+                                    for="channelMarathi">Marathi</label></p>
+                            <p><input type="radio" name="langChannel" value="Mongolian" id="channelMongolian"><label
+                                    for="channelMongolian">Mongolian</label></p>
+                            <p><input type="radio" name="langChannel" value="Nepali" id="channelNepali"><label
+                                    for="channelNepali">Nepali</label></p>
+                            <p><input type="radio" name="langChannel" value="Norwegian" id="channelNorwegian"><label
+                                    for="channelNorwegian">Norwegian</label></p>
+                            <p><input type="radio" name="langChannel" value="Persian" id="channelPersian"><label
+                                    for="channelPersian">Persian</label></p>
+                            <p><input type="radio" name="langChannel" value="Polish" id="channelPolish"><label
+                                    for="channelPolish">Polish</label></p>
+                            <p><input type="radio" name="langChannel" value="Portuguese" id="channelPortuguese"><label
+                                    for="channelPortuguese">Portuguese</label></p>
+                            <p><input type="radio" name="langChannel" value="Punjabi" id="channelPunjabi"><label
+                                    for="channelPunjabi">Punjabi</label></p>
+                            <p><input type="radio" name="langChannel" value="Quechua" id="channelQuechua"><label
+                                    for="channelQuechua">Quechua</label></p>
+                            <p><input type="radio" name="langChannel" value="Romanian" id="channelRomanian"><label
+                                    for="channelRomanian">Romanian</label></p>
+                            <p><input type="radio" name="langChannel" value="Russian" id="channelRussian"><label
+                                    for="channelRussian">Russian</label></p>
+                            <p><input type="radio" name="langChannel" value="Samoan" id="channelSamoan"><label
+                                    for="channelSamoan">Samoan</label></p>
+                            <p><input type="radio" name="langChannel" value="Serbian" id="channelSerbian"><label
+                                    for="channelSerbian">Serbian</label></p>
+                            <p><input type="radio" name="langChannel" value="Slovak" id="channelSlovak"><label
+                                    for="channelSlovak">Slovak</label></p>
+                            <p><input type="radio" name="langChannel" value="Slovenian" id="channelSlovenian"><label
+                                    for="channelSlovenian">Slovenian</label></p>
+                            <p><input type="radio" name="langChannel" value="Spanish" id="channelSpanish"><label
+                                    for="channelSpanish">Spanish</label></p>
+                            <p><input type="radio" name="langChannel" value="Swahili" id="channelSwahili"><label
+                                    for="channelSwahili">Swahili</label></p>
+                            <p><input type="radio" name="langChannel" value="Swedish" id="channelSwedish"><label
+                                    for="channelSwedish">Swedish</label></p>
+                            <p><input type="radio" name="langChannel" value="Tamil" id="channelTamil"><label
+                                    for="channelTamil">Tamil</label></p>
+                            <p><input type="radio" name="langChannel" value="Tatar" id="channelTatar"><label
+                                    for="channelTatar">Tatar</label></p>
+                            <p><input type="radio" name="langChannel" value="Telugu" id="channelTelugu"><label
+                                    for="channelTelugu">Telugu</label></p>
+                            <p><input type="radio" name="langChannel" value="Thai" id="channelThai"><label
+                                    for="channelThai">Thai</label></p>
+                            <p><input type="radio" name="langChannel" value="Tibetan" id="channelTibetan"><label
+                                    for="channelTibetan">Tibetan</label></p>
+                            <p><input type="radio" name="langChannel" value="Tonga" id="channelTonga"><label
+                                    for="channelTonga">Tonga</label></p>
+                            <p><input type="radio" name="langChannel" value="Turkish" id="channelTurkish"><label
+                                    for="channelTurkish">Turkish</label></p>
+                            <p><input type="radio" name="langChannel" value="Ukranian" id="channelUkranian"><label
+                                    for="channelUkranian">Ukranian</label></p>
+                            <p><input type="radio" name="langChannel" value="Urdu" id="channelUrdu"><label
+                                    for="channelUrdu">Urdu</label></p>
+                            <p><input type="radio" name="langChannel" value="Uzbek" id="channelUzbek"><label
+                                    for="channelUzbek">Uzbek</label></p>
+                            <p><input type="radio" name="langChannel" value="Vietnamese" id="channelVietnamese"><label
+                                    for="channelVietnamese">Vietnamese</label></p>
+                            <p><input type="radio" name="langChannel" value="Welsh" id="channelWelsh"><label
+                                    for="channelWelsh">Welsh</label></p>
+                            <p><input type="radio" name="langChannel" value="Xhosa" id="channelXhosa"><label
+                                    for="channelXhosa">Xhosa</label></p>
+                        </div>
+                        <h3>Select level:</h3>
+                        <div id="levelSelect" class="flexRow fullWidth">
+                            <p>
+                                <input type="radio" name="level" id="elementary"><label
+                                    for="elementary">elementary</label>
+                            </p>
+                            <p>
+                                <input type="radio" name="level" id="intermediate"><label for="intermediate">intermediate</label>
+                            </p>
+                            <p>
+                                <input type="radio" name="level" id="advanced"><label for="advanced">advanced</label>
+                            </p>
+                            <p>
+                                <input type="radio" name="level" id="native"><label for="native">native</label>
+                            </p>
+                        </div>
+                        <input type="submit" value="Search" class="pointer">
+                    </form>
+                </div>
+                <div id="channelsUsers" class="rightSide smFullWidth">
+                    <div id="usersList" class="hideScrollbar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="sidebar" class="flexColumn">
+        <div id="showHideSidebar" class="showingSidebar border pointer">hide ⇒</div>
+        <div class="photoAndUsername">
+            <div id="pictureDiv" class="shadow noOverflow"></div>
+            <button id="editProfilePhoto" class="pointer">Change Photo</button>
+            <h2 id="usersName">
+                User
+            </h2>
+        </div>
+        <ul id="navigation">
+            <li><a href="#" id="myMessages" class="">My Messages</a><span class="newMessageNum"></span></li>
+            <li><a href="#" id="myProfile" class="">My Profile</a></li>
+            <li><a href="#" id="myFavorites" class="">My Favorites</a></li>
+            <li><a href="#" id="myBlockList" class="">My Block List</a></li>
+            <li><a href="#" id="channels" class="">Channels</a></li>
+            <li><a href="#" id="settings" class="">Settings</a></li>
+        </ul>
+        <h2><a href="#" id="signOut">Sign Out</a></h2>
+        <h5><a href="mailto:appfluency@gmail.com">support:<br>appfluency@gmail.com</a></h5>
+    </div>
+</div>
+<div id="noticeBackground"></div>
+<div id="notice" class="shadow"></div>
+<div id="uploadBackground" class="center fullWidth hide">
+    <div id="uploadProfilePhoto" class="shadow">
+        <a class="close shadow" id="closeUploadDiv">X</a>
+        <h3 id="uploadStatus"></h3>
+        <form enctype="multipart/form-data" action="?" method="post" id="uploadPhoto">
+            <div class="uploadBtnWrapper pointer noOverflow">
+                <button class="chooseFileBtn shadow fullWidth" id="chooseFileBtn">Choose a file</button>
+                <label for="profilePhotoFile">Add Photo:</label><input type="file" id="profilePhotoFile"
+                                                                       name="profilePhoto"
+                                                                       accept=".jpeg,.gif,.png,.jpg" class="fullWidth">
+            </div>
+            <input type="submit" value="Upload" class="shadow">
+        </form>
+    </div>
+</div>
+<div id="profileDiv" class="fullWidth hide">
+    <div id="profile" class="shadow border">
+        <div id="profilePhoto" class="shadow"></div>
+        <div id="genderAndYears" class="flexRow">
+            <p id="usersGender" class="genderAndYears left ">No Info</p>
+            <p id="usersBirthDate" class="genderAndYears right">🎂 No Info</p>
+        </div>
+        <div>
+            <h2 id="usersUsername" class="usernameAndAboutMe">No Info</h2>
+            <p id="usersAboutMe" class="usernameAndAboutMe">No Info</p>
+        </div>
+        <div id="otherInformations" class="flexColumn">
+            <div class="flexRow">
+                <p class="left">Country:</p>
+                <p id="usersCountry" class="right">No Info</p>
+            </div>
+            <div class="flexRow">
+                <p class="left">City:</p>
+                <p id="usersCity" class="right">No Info</p>
+            </div>
+            <div class="flexRow">
+                <p class="left">Interests:</p>
+                <p id="usersInterests" class="right">No Info</p>
+            </div>
+        </div>
+        <div class="usersLangDiv">
+            <p>Languages:</p>
+            <p id="usersLanguage">No Info</p>
+        </div>
+        <div class="usersRatingDiv">
+            <p>Rating:</p>
+            <p id="usersRating">Not rated yet</p>
+        </div>
+        <div class="flexRow">
+            <button id="backSaProfila" class="profileBtns">🡐 Back</button>
+            <button class="profileBtns" id="addToFavsBtn">Add To Favorites</button>
+            <button class="profileBtns" id="blockBtn">Block</button>
+            <button class="profileBtns" id="editBtn">Edit Profile</button>
+        </div>
+    </div>
+</div>
+<div id="loadingBackground" class="fullWidth hide">
+    <div id="loading"></div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-storage.js"></script>
+<script src="script/main.js"></script>
+<script src="node_modules/webrtc-adapter/out/adapter.js"></script>
+<script src="script/dashScript.js"></script>
+<script src="script/blockAndFavorite.js"></script>
+<script src="script/uploadingProfilePhoto.js"></script>
+<script src="script/messages.js"></script>
+<script src="script/search.js"></script>
+<script src="script/video.js"></script>
+</body>
+</html>

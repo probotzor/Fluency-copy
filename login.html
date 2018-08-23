@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fluency</title>
+    <link rel="icon" type="image/png" href="graph/favicon.png" sizes="16x16">
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito" rel="stylesheet">
+</head>
+<body>
+<div id="wrap">
+    <header class="pointer">
+        <div>
+            <h1 id="fluency">Fluency</h1>
+            <p id="slogan">is a bridge for a foreign culture</p>
+        </div>
+    </header>
+    <div id="content">
+        <div id="formDiv">
+            <img src="graph/logo.png" alt="logo" id="logo">
+            <form action="?" method="post" id="loginForm">
+                <input type="text" name="email" placeholder="email" class="input" id="email">
+                <br>
+                <input type="password" name="password" placeholder="********" class="input" id="password">
+                <br>
+                <input type="submit" value="Sign in" class="submitBtn">
+            </form>
+        </div>
+        <p id="haveAcc">Don't have an account? Register <a href="register.html">Here</a>.</p>
+        <p id="forgotPass">Forgot your password? Click <a href="#" id="forgotPassLink">Here</a>.</p>
+    </div>
+</div>
+<div id="noticeBackground"></div>
+<div id="notice" class="shadow"></div>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-database.js"></script>
+<script src="script/main.js"></script>
+<script src="script/settings.js"></script>
+<script>
+    loginForm.addEventListener("submit", goOnline);
+    forgotPassLink.addEventListener("click", openForgotPassModal);
+</script>
+</body>
+</html>
